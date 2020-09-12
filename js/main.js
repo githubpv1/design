@@ -1,5 +1,5 @@
 
-objectFitImages(); //IE polyfill
+objectFitImages(); 
 
 
 	/* carousel */
@@ -17,8 +17,8 @@ objectFitImages(); //IE polyfill
 		loop: true,
 		grabCursor: true,
     navigation: {
-      nextEl: '.next_carousel',
-      prevEl: '.prev_carousel',
+      nextEl: '.home__btn_prev',
+      prevEl: '.home__btn_next',
     },
 		pagination: {
 			el: '.swiper-pagination1',
@@ -46,7 +46,35 @@ objectFitImages(); //IE polyfill
   });
  
 
+	// ===== gallery =====
+
+	if(window.innerWidth < 768) {
+		var mySwiper = new Swiper ('.gallery__swiper', {
+			//spaceBetween: 20,
+			slidesPerView: 1,
+			loop: true,
+			grabCursor: true,
+			navigation: {
+				nextEl: '.gallery__btn_next',
+				prevEl: '.gallery__btn_prev',
+			},
+			pagination: {
+				el: '.gallery_pagination',
+				type: 'fraction',
+				renderFraction: function (currentClass, totalClass) {
+	
+					return  '0' +'<span class="' + currentClass + '"></span>' +
+							 '&nbsp;&nbsp;&nbsp; &mdash; &nbsp;&nbsp;&nbsp;  ' + '0' +
+							 '<span class="' + totalClass + '"></span>';
+				}
+			}
+		});
+	}
+
+	
  
+
+
 /*автовысота для textarea*/ 
  var tx = document.getElementsByTagName('textarea');
 for (var i = 0; i < tx.length; i++) {
@@ -81,12 +109,9 @@ document.getElementById('input_file').onchange = function(e) {
 			file_name.innerHTML = 'Выбрано ' + files.length + ' Файла(ов)';
 		}
 }		
-/**/
 
 
-stickybits ('.nav_site_page' , {verticalPosition : ' bottom ' });
 
-stickybits('.wrap_nav_site_page');
 	
 			
 	
